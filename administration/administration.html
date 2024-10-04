@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers List</title>
+    <style>
+        .teacher-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+    </style>
+    <link rel="stylesheet" href="administration.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container" style="flex-direction: column; margin-top: 20px;">
+        <h1>Teachers List</h1>
+        <input type="file" id="fileUpload" accept=".xlsx, .xls" onchange="handleFileUpload(event)">
+        <p>Upload an Excel file with columns "name" and "email" to add teacher.</p>
+        <div id="teachersList"></div>
+    </div>
+
+    <script src="administration.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+#createGroupDialog {
+    border-radius: 15px;
+    width: 20%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    border-width: 0px;
+}
+
+#createGroupForm {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+input:focus {
+    border-color: #C0E0A5;
+}
+
+#createGroupBtn {
+    width: 75%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color:#C0E0A5;
+    border-width: 0px;
+    margin-top: 40px;
+    transition: background-color 0.4s ease;
+}
+
+#createGroupBtn:hover {
+    background-color: #A5D6A7;
+}
+
+#closeDialogBtn {
+    width: 20px;
+    height: 20px;
+}
+
+#header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+}
+
+#openCreateGroupDialogBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-width: 0px;
+    background-color: #C0E0A5;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+#openCreateGroupDialogBtn:hover {
+    background-color: #A5D6A7;
+}
+
+.link-block {
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    width: 200px;
+    transition: background-color 0.4s ease;
+}
+
+.link-block:hover {
+    background-color: #C0E0A5;
+}

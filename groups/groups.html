@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups</title>
+    <link rel="stylesheet" href="../main/index.css">
+    <link rel="stylesheet" href="groups.css">
+</head>
+<body>
+
+    <div class="container" style="flex-direction: column; margin-top: 20px;">
+        <h1>Groups</h1>
+        <button onclick="showDialog()" id="openCreateGroupDialogBtn">
+            <img src="../assets/icon-add.svg" style="width: 30px;height:30px;"/>
+            <p style="font-size:15px;">Create group</p>
+        </button>
+        <div id="groupList" style="margin-top: 20px;"></div>
+    </div>
+    
+    <dialog id="createGroupDialog">
+        <div id="header"> 
+            <h2>Create group</h2>
+            <img
+                src="../assets/icon-close.svg"
+                alt="close" 
+                onclick="closeDialog()"
+                id="closeDialogBtn"
+                style="cursor: pointer;" >
+        </div>
+        <form id="createGroupForm" onsubmit="createGroup(event)">
+            <input type="text" id="groupName" placeholder="Group Name">
+            <button type="submit" id="createGroupBtn">Create</button>
+        </form>
+    </dialog>
+
+    <script src="groups.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.groupName {
+    background-color: #C0E0A5;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#studentList {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

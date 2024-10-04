@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Details</title>
+    <link rel="stylesheet" href="../main/index.css">
+    <link rel="stylesheet" href="group.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container" style="flex-direction: column; margin-top: 20px;">
+        <h1>Group students</h1>
+        <input type="file" id="fileUpload" accept=".xlsx, .xls" onchange="handleFileUpload(event)">
+        <p>Upload an Excel file with columns "name" and "surname" to add students.</p>
+        
+        <div id="studentList"></div>
+    </div>
+
+    <script src="group.js"></script>
+</body>
+</html>
