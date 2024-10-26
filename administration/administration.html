@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +21,33 @@
         }
     </style>
     <link rel="stylesheet" href="administration.css">
+    <link rel="stylesheet" href="../main/index.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
+
 <body>
     <div class="container" style="flex-direction: column; margin-top: 20px;">
         <h1>Teachers List</h1>
-        <input type="file" id="fileUpload" accept=".xlsx, .xls" onchange="handleFileUpload(event)">
-        <p>Upload an Excel file with columns "name" and "email" to add teacher.</p>
-        <div id="teachersList"></div>
+
+        <p style="margin-top:30px;">Upload an Excel file with columns "name" and "email" to add teacher.</p>
+        <div class="container" style="margin-top: 0px;">
+            <label for="fileUpload" class="btn btn-primary" style="border-radius: 20px;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <img src="../assets/icon-add.svg" style="width: 35px; height: 35px;" />
+                    <p style="margin: 0; padding: 0; font-size:18px;">Add teachers</p>
+                </div>
+
+            </label>
+            <input type="file" id="fileUpload" accept=".xlsx, .xls" onchange="handleFileUpload(event)"
+                style="display: none;">
+        </div>
+
+        <div id="teachersList" style="margin-top: 50px;"></div>
     </div>
 
     <script src="administration.js"></script>
 </body>
+
 </html>

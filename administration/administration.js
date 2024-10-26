@@ -32,17 +32,20 @@ function loadTeachers() {
         .then(response => {
             const teachersList = document.getElementById('teachersList');
             teachersList.innerHTML = '';
+            teachersList.style = 'width:100%;display:flex;flex-direction:column;align-items:center;'
 
             response.data.forEach(teacher => {
                 console.log('Teacher: ', teacher);
                 const teacherElement = document.createElement('div');
+                teacherElement.className = 'link-block';
+                teacherElement.style = "width: 40%;"
 
                 teacherElement.innerHTML = `
-                    <div class="cont">
-                        <span class="user-name">${teacher.name}</span>
-                        <button class="delete-btn" onclick='deleteTeacher("${teacher.id}")'>&#x1F5D1;</button>
-                        <img src="../assets/delete_icon.svg" onclick='deleteTeacher("${teacher.id}")' style="cursor: pointer; width: 30px; height: 30px; border-radius: 50%;">
+                    <div>
+                        <strong class="user-name">${teacher.name}</strong><br>
+                        <p class="groupName" style="margin: 0px;margin-top:5px;">${(teacher.group !== null && teacher.group.name !== null) ? teacher.group.name : 'No group'}</p>
                     </div>
+                    <img src="../assets/delete_icon.svg" onclick='deleteTeacher("${teacher.id}")' style="cursor: pointer; width: 30px; height: 30px; border-radius: 50%;">
                 `;
                 teachersList.appendChild(teacherElement);
                 allGroups.forEach(group => {
