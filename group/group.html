@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Details</title>
     <link rel="stylesheet" href="../main/index.css">
     <link rel="stylesheet" href="group.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
+
 <body>
     <div class="container" style="flex-direction: column; margin-top: 20px;">
         <h1>Group students</h1>
-        <input type="file" id="fileUpload" accept=".xlsx, .xls" onchange="handleFileUpload(event)">
+        <div class="container mt-5">
+            <label for="fileUpload" class="btn btn-primary" style="border-radius: 20px;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <img src="../assets/icon-add.svg" style="width: 45px; height: 45px; fill: white;" />
+                    <p style="margin: 0; padding: 0;">Add students</p>
+                </div>
+
+            </label>
+            <input type="file" id="fileUpload" accept=".xlsx, .xls" onchange="handleFileUpload(event)"
+                style="display: none;">
+        </div>
         <p>Upload an Excel file with columns "name" and "surname" to add students.</p>
-        
+
         <div id="studentList"></div>
     </div>
 
     <script src="group.js"></script>
 </body>
+
 </html>

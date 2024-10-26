@@ -15,12 +15,12 @@ function loadStudents() {
             })
             .then(responseData => {
                 console.log('Response received:', responseData);
-    
+
                 if (responseData.code === 200 && responseData.data) {
                     const students = responseData.data;
                     const studentList = document.getElementById('studentList');
                     studentList.innerHTML = '';
-                    
+
                     students.forEach(student => {
                         const studentElement = document.createElement('div');
                         studentElement.className = 'link-block';
@@ -31,11 +31,10 @@ function loadStudents() {
                                 <strong>${student.name}</strong><br>
                                 <p class="groupName" style="margin: 0px;margin-top:5px;">${student.group.name || 'N/A'}</p>
                             </div>
-                            <img src="../assets/delete_icon.svg" style="cursor: pointer; width: 30px; height: 30px; border-radius: 50%;">
+                            <img onclick='deleteStudent("${student.id}")' src="../assets/delete_icon.svg" style="cursor: pointer; width: 30px; height: 30px; border-radius: 50%;">
                         `
 
                         studentList.appendChild(studentElement);
-                        studentElement.appendChild(deleteButton);
                     });
                 } else {
                     console.error('Error: No students found or invalid response format');
@@ -65,7 +64,7 @@ function generatePassword() {
 
 // Function to generate an email based on the student's name
 function generateEmail(name, group) {
-    const hash = stringToHash(name)+stringToHash(group) // Generate a string hash from characters
+    const hash = stringToHash(name) + stringToHash(group) // Generate a string hash from characters
     return `student${hash}@studpass.com`.toLowerCase();
 }
 
@@ -80,7 +79,7 @@ function handleFileUpload(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: 'array' });
         const sheetName = workbook.SheetNames[0];
@@ -89,10 +88,10 @@ function handleFileUpload(event) {
 
         const studentData = []
 
-        students.forEach( (student) => {
+        students.forEach((student) => {
             const name = student.name;
             const surname = student.surname
-            const email = generateEmail(name+surname, groupId);
+            const email = generateEmail(name + surname, groupId);
             const password = generatePassword();
             const profile_image_url = "";
 
@@ -111,30 +110,30 @@ function handleFileUpload(event) {
                 },
                 body: JSON.stringify(studentAuthDto)
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Student registered successfully:', data);
-                studentData.push({
-                    name: name + ' ' + surname, 
-                    group: groupId, 
-                    email: email, 
-                    password: password
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Student registered successfully:', data);
+                    studentData.push({
+                        name: name + ' ' + surname,
+                        group: groupId,
+                        email: email,
+                        password: password
+                    });
+                    if (studentData.length == students.length) {
+                        downloadExcelFile(studentData, "Output students.xlsx")
+                    }
+                })
+                .catch(error => {
+                    console.error('Error registering student:', error);
                 });
-                if (studentData.length == students.length) {
-                    downloadExcelFile(studentData, "Output students.xlsx")
-                }
-            })
-            .catch(error => {
-                console.error('Error registering student:', error);
-            });
         });
         // if (studentData.length > 0) {
-            
+
         // }
         loadStudents();
     }
@@ -148,15 +147,15 @@ function deleteStudent(studentId) {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        } else {
-            alert('Student deleted successfully');
-            loadStudents();
-        }
-    })
-    .catch(error => {
-        console.error('Error deleting student:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            } else {
+                alert('Student deleted successfully');
+                loadStudents();
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting student:', error);
+        });
 }
