@@ -1,0 +1,29 @@
+name: Update WebSite on server
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: SSH to Server and Perform Actions 
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd www
+            cd studpass.tech
+            rm *
+            rm -r -f *
+            git clone https://github.com/DEM-Corporation/StudPassWebAdmin.git
+            mv StudPassWebAdmin/* .
+            rm -r -f StudPassWebAdmin
