@@ -88,7 +88,7 @@ function handleFileUpload(event) {
 
         const studentData = []
 
-        students.forEach((student) => {
+        students.forEach((student, i) => {
             const name = student.name;
             const surname = student.surname;
             const email = generateEmail(name + surname, groupId);
