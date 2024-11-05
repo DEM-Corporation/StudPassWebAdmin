@@ -98,7 +98,7 @@ function handleFileUpload(event) {
             const studentAuthDto = {
                 email: email,
                 groupId: parseInt(groupId),
-                name: name,
+                name: name + ' ' + surname,
                 password: password,
                 profileImageUrl: profile_image_url
             };
@@ -117,14 +117,16 @@ function handleFileUpload(event) {
                     return response.json();
                 })
                 .then(data => {
-                    console.log('Student registered successfully:', data);
-                    studentData.push({
-                        name: name + ' ' + surname,
-                        group: groupId,
-                        email: email,
-                        password: password
-                    });
-                    if (studentData.length == students.length) {
+                    if (data.code == 200) {
+                        console.log('Student registered successfully:', data);
+                        studentData.push({
+                            name: name + ' ' + surname,
+                            group: groupId,
+                            email: email,
+                            password: password
+                        });
+                    }
+                    if (i == students.length - 1) {
                         downloadExcelFile(studentData, "Output students.xlsx")
                     }
                 })
@@ -132,9 +134,6 @@ function handleFileUpload(event) {
                     console.error('Error registering student:', error);
                 });
         });
-        // if (studentData.length > 0) {
-
-        // }
         loadStudents();
     }
     reader.readAsArrayBuffer(file);
