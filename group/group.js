@@ -118,7 +118,6 @@ function handleFileUpload(event) {
                 })
                 .then(data => {
                     if (data.code == 200) {
-                        console.log('Student registered successfully:', data);
                         studentData.push({
                             name: name + ' ' + surname,
                             group: groupId,
