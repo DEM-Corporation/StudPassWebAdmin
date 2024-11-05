@@ -90,7 +90,7 @@ function handleFileUpload(event) {
 
         students.forEach((student) => {
             const name = student.name;
-            const surname = student.surname
+            const surname = student.surname;
             const email = generateEmail(name + surname, groupId);
             const password = generatePassword();
             const profile_image_url = "";
