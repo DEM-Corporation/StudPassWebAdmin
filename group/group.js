@@ -98,7 +98,7 @@ function handleFileUpload(event) {
             const studentAuthDto = {
                 email: email,
                 groupId: parseInt(groupId),
-                name: name + ' ' + surname,
+                name: (name + ' ' + surname),
                 password: password,
                 profileImageUrl: profile_image_url
             };
